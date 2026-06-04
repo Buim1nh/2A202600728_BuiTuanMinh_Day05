@@ -87,7 +87,9 @@ export default function ChatInputBar({ onSend, isLoading }: ChatInputBarProps) {
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Bạn muốn ăn gì nóng nóng, rẻ rẻ...?"
+        name="message"
+        aria-label="Nhập món ăn bạn muốn tìm"
+        placeholder="Bạn muốn ăn gì nóng nóng, rẻ rẻ…?"
         className="flex-1 bg-transparent border-none outline-none text-gray-700 placeholder-gray-400 py-2"
         disabled={isLoading}
       />
@@ -97,6 +99,7 @@ export default function ChatInputBar({ onSend, isLoading }: ChatInputBarProps) {
         className={`p-2 rounded-full transition-colors mr-2 ${isListening ? 'bg-red-100 text-red-600' : 'text-gray-400 hover:text-[var(--color-shopee-orange)] hover:bg-orange-50'}`}
         disabled={isLoading}
         title="Nhập bằng giọng nói"
+        aria-label={isListening ? "Tắt nhận diện giọng nói" : "Nhập bằng giọng nói"}
       >
         {isListening ? <MicOff size={20} /> : <Mic size={20} />}
       </button>
@@ -108,6 +111,7 @@ export default function ChatInputBar({ onSend, isLoading }: ChatInputBarProps) {
             ? 'bg-gray-300 cursor-not-allowed' 
             : 'bg-[var(--color-shopee-orange)] hover:bg-orange-600 shadow-md transform hover:scale-105 active:scale-95'
         }`}
+        aria-label="Gửi tin nhắn"
       >
         {isLoading ? <Loader2 size={20} className="animate-spin" /> : <Send size={20} className="ml-1" />}
       </button>

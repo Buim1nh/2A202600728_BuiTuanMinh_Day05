@@ -76,9 +76,9 @@ export default function Home() {
         {suggestions.length === 0 && !clarifyQuestion && !isLoading ? (
           <ViewTransition enter="fade-in" exit="fade-out" default="none">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-extrabold text-gray-800 mb-4">
+              <h1 className="text-4xl font-extrabold text-gray-800 mb-4">
                 Bạn Đang Thèm Gì?
-              </h2>
+              </h1>
               <p className="text-lg text-gray-500 max-w-md mx-auto">
                 Nhập hoặc nói tên món ăn, hương vị bạn muốn. AI sẽ gợi ý cho bạn 3 lựa chọn tốt nhất!
               </p>
@@ -96,7 +96,7 @@ export default function Home() {
           <ViewTransition enter="fade-in" exit="fade-out" default="none">
             <div className="mt-12 flex flex-col items-center justify-center space-y-4">
               <div className="text-6xl animate-bounce">🍲</div>
-              <p className="text-gray-500 font-medium">Đang tìm quán ngon cho bạn...</p>
+              <p className="text-gray-500 font-medium">Đang tìm quán ngon cho bạn…</p>
             </div>
           </ViewTransition>
         ) : null}

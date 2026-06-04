@@ -18,9 +18,18 @@ export default function FlipCard({ item, index }: { item: Suggestion; index: num
 
   return (
     <div
-      className="group relative w-64 h-80 rounded-2xl cursor-pointer"
+      className="group relative w-64 h-80 rounded-2xl cursor-pointer focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-shopee-orange)]"
       style={{ perspective: '1000px' }}
       onClick={() => setIsFlipped(!isFlipped)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setIsFlipped(!isFlipped);
+        }
+      }}
+      tabIndex={0}
+      role="button"
+      aria-label={`Món: ${item.dish_name} tại quán ${item.restaurant_name}`}
     >
       <div
         className={`w-full h-full transition-transform duration-500 rounded-2xl shadow-lg`}

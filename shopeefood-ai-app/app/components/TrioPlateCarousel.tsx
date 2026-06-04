@@ -42,7 +42,7 @@ export default function TrioPlateCarousel({ suggestions, clarifyQuestion }: Trio
         
         <div className="flex flex-wrap justify-center gap-6 items-center">
           {suggestions.map((item, index) => (
-            <ViewTransition key={item.restaurant_id}>
+            <ViewTransition key={`${item.restaurant_id}-${index}`}>
               <FlipCard item={item} index={index} />
             </ViewTransition>
           ))}
