@@ -37,7 +37,8 @@ def parse_budget_limit(message: str) -> Optional[int]:
     # Pattern 1: matching words indicating limit followed by a number
     patterns = [
         r'(?:dưới|<|<=|tầm|khoảng|\bmax\b)\s*(\d+(?:\.\d+)?)\s*(k|đ|đồng|ngàn|nghìn)?',
-        r'(\d+(?:\.\d+)?)\s*(k|đ|đồng|ngàn|nghìn)?\s*(?:đổ lại|trở xuống|dưới)'
+        r'(\d+(?:\.\d+)?)\s*(k|đ|đồng|ngàn|nghìn)?\s*(?:đổ lại|trở xuống|dưới)',
+        r'\b(\d+(?:\.\d+)?)\s*(k|đ|đồng|ngàn|nghìn)\b'
     ]
     for pattern in patterns:
         match = re.search(pattern, message)

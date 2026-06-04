@@ -157,3 +157,49 @@ def get_recommendations(
         clarify_question="",
         suggestions=suggestions
     )
+
+if __name__ == "__main__":
+    # Script test truc tiep tu terminal
+    # Luu y chay tu thu muc 'backend': python -m app.ai_agent
+    import sys
+    if sys.stdout.encoding != 'utf-8':
+        sys.stdout.reconfigure(encoding='utf-8')
+
+    print("=== KIỂM THỬ ĐỘC LẬP AI AGENT ===")
+    
+    # Giả lập danh sách ứng viên sau khi chạy bộ tiền lọc
+    mock_candidates = [
+        {
+            "restaurant_id": "res_001",
+            "restaurant_name": "Bún Bò Cô Ba",
+            "dish_name": "Bún Bò Nạm Lớn",
+            "price": 45000,
+            "distance_km": 0.8,
+            "eta_minutes": 15,
+            "tags": ["nóng", "nước", "mặn"]
+        },
+        {
+            "restaurant_id": "res_002",
+            "restaurant_name": "Cơm Tấm Phúc Lộc Thọ",
+            "dish_name": "Cơm Sườn Bì Chả",
+            "price": 48000,
+            "distance_km": 1.2,
+            "eta_minutes": 18,
+            "tags": ["nóng", "khô", "mặn"]
+        }
+    ]
+    
+    test_coords = Coords(hot=0.8, cheap=0.9, near=0.7)
+    
+    # Test case 1: Happy Path
+    print("\nCase 1: Happy Path ('Món gì nóng rẻ gần đây')")
+    res1 = get_recommendations(mock_candidates, "Món gì nóng rẻ gần đây", [], test_coords)
+    print(f"Action: {res1.action}")
+    for s in res1.suggestions:
+        print(f"  - {s.restaurant_name} | {s.dish_name} | {s.price}đ | Lý do: {s.reason}")
+        
+    # Test case 2: Lạc đề
+    print("\nCase 2: Lạc đề ('Thời tiết mai ra sao')")
+    res2 = get_recommendations(mock_candidates, "Thời tiết mai ra sao", [], test_coords)
+    print(f"Action: {res2.action} | Câu hỏi: {res2.clarify_question}")
+
