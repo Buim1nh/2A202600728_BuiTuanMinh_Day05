@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import ChatInputBar from './components/ChatInputBar';
+import Image from 'next/image';
 import TrioPlateCarousel from './components/TrioPlateCarousel';
 import { ViewTransition } from 'react';
 
@@ -58,9 +59,14 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-gray-50 items-center font-sans">
       {/* Header */}
       <header className="w-full bg-white shadow-sm p-4 sticky top-0 z-10 flex justify-center border-b border-gray-100">
-        <h1 className="text-2xl font-bold text-[var(--color-shopee-orange)]">
-          ShopeeFood AI
-        </h1>
+        <Image
+          src="/shopee-food-indonesia-seeklogo.png"
+          alt="Shopee Food Logo"
+          width={180}
+          height={60}
+          priority
+          className="object-contain"
+        />
       </header>
 
       {/* Main Content Area */}
