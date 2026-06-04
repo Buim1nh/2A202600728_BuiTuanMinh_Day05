@@ -4,26 +4,26 @@ Thin SPEC không phải PRD đầy đủ. Đây là bản cam kết đủ rõ đ
 
 ## 1. Track, product/app và user
 
-**Track:** [Cần điền thủ công]  
+**Track:** AI Product Design (Mini-Hackathon)  
 **Product/app thật:** ShopeeFood  
-**User cụ thể:** Người dùng mở app khi đói, chưa có món cụ thể trong đầu, có ý định mơ hồ (ví dụ: "món gì nóng nóng, rẻ rẻ, gần đây").  
-**Nhóm có phải user thật không? Nếu không, khác ở đâu?** [Cần điền thủ công]  
+**User cụ thể:** Dân văn phòng bận rộn đặt cơm trưa cá nhân trong khung giờ 11h30-12h00, áp lực thời gian nghỉ trưa ngắn (45-60 phút), ngân sách cố định (<60k) và ăn một mình.  
+**Nhóm có phải user thật không? Nếu không, khác ở đâu?** Có, 10/15 đối tượng khảo sát là dân văn phòng thực tế, có hành vi đặt cơm trưa cá nhân và thời gian nghỉ trưa hạn chế từ 45-60 phút.  
 
 ## 2. Evidence summary
 
 | Evidence | Nguồn | User/pain nói lên điều gì? | SPEC phải đổi gì? |
 |---|---|---|---|
-| **P1:** Tê liệt vì quá nhiều lựa chọn | Phỏng vấn & quan sát trực tiếp | Thời gian từ mở app đến đặt (time-to-order) dài, tỉ lệ lướt rồi thoát app cao. | Giới hạn kết quả gợi ý tối đa 3 món/quán phù hợp nhất để giảm choice paralysis. |
-| **P2:** Gợi ý tối nghĩa / như quảng cáo | Review App Store & Phỏng vấn | Người dùng không tin tưởng gợi ý mặc định vì không hiểu lý do món đó được đề xuất. | Mỗi gợi ý phải có thêm 1 dòng lý do thuyết phục bám sát ý định. |
-| **P3:** Không có cách diễn đạt ý định mơ hồ | Ghi nhận hành vi nhập/search | Việc tìm kiếm bằng từ khóa thông thường không giải quyết được các mong muốn tự nhiên phi cấu trúc. | Cung cấp giao diện chat để người dùng nhập ý định tự do và dùng AI diễn giải. |
+| **P1:** Tê liệt vì quá nhiều lựa chọn | Khảo sát thực tế ($N=15$) | 13/15 người dùng mất từ 5-20+ phút để chọn món; 12/15 người thỉnh thoảng/rất thường xuyên thoát app không đặt gì vì nản chí trước các lựa chọn. | Giới hạn kết quả gợi ý tối đa 3 quán phù hợp nhất. AI phải ưu tiên tiền lọc quán gần và giá rẻ trước (do lý do thoát app hàng đầu là quán xa/phí ship cao). |
+| **P2:** Gợi ý tối nghĩa / như quảng cáo | Khảo sát thực tế ($N=15$) | Chỉ 3/15 người dùng thường xuyên xem gợi ý. Điểm tin cậy trung bình là 2.93/5. Người dùng coi gợi ý mặc định là "chạy quảng cáo", "quán ở xa". | Mỗi gợi ý phải có thêm 1 dòng lý do thuyết phục ngắn gọn (< 12 từ) giải thích lý do quán này được chọn (phù hợp khoảng cách, giá cả). |
+| **P3:** Không có cách diễn đạt ý định mơ hồ | Khảo sát thực tế ($N=15$) | 10/15 người chưa từng gõ từ khóa tự nhiên vì nghĩ app không hiểu; 4/15 người thử gõ nhưng thất bại. 15/15 người sẵn sàng hoặc muốn dùng thử chatbot AI gợi ý. | Cung cấp giao diện chat tự nhiên để nhập ý định mơ hồ và dùng AI xử lý, hiển thị 3 thẻ gợi ý rõ ràng kèm nút 1-chạm mở quán. |
 
 ## 3. Pain statement
 
 ```text
-User [người dùng ShopeeFood chưa biết ăn gì] đang gặp khó ở [bước tìm kiếm và quyết định chọn món khi đang đói],
-vì [danh sách "Gợi ý cho bạn" thiếu ngữ cảnh/không liên quan và ô search chỉ nhận keyword cứng],
-dẫn tới [họ tốn nhiều thời gian lướt mỏi mắt và đôi khi bỏ cuộc không đặt hàng nữa].
-Bằng chứng chính là [các giả thuyết P1-P3 trong spec.md - cần điền quote/screenshot phỏng vấn thực tế sau khi có].
+User [dân văn phòng bận rộn đặt cơm trưa cá nhân] đang gặp khó ở [bước tìm kiếm và quyết định chọn món trong khung giờ nghỉ trưa ngắn],
+vì [danh sách "Gợi ý cho bạn" thiếu tin cậy/nghi chạy quảng cáo và ô search chỉ nhận keyword cứng],
+dẫn tới [họ tốn nhiều thời gian lướt mỏi mắt (13/15 mất >5-20+ phút) và đôi khi bỏ cuộc thoát app không đặt hàng nữa (12/15)].
+Bằng chứng chính là [kết quả khảo sát 15 người dùng tại file Khao_Sat_Hanh_Vi_Dat_Do_An_Trua.md: 12/15 người gặp choice paralysis và thoát app, điểm tin cậy gợi ý đạt 2.93/5, 14/15 tìm kiếm thất bại khi nhập ý định tự nhiên].
 ```
 
 ## 4. Build slice
@@ -66,15 +66,15 @@ Nếu user [gửi ý định và kích hoạt AI gợi ý quán],
 AI có thể [ảo tưởng (hallucination) ra các món ăn hoặc restaurant_id không có thật trong cơ sở dữ liệu],
 hậu quả là [người dùng bấm vào thẻ gợi ý bị lỗi hệ thống (link hỏng, lỗi 404) hoặc dẫn tới quán đã đóng cửa/ngoài phạm vi giao, gây mất uy tín dịch vụ].
 Prototype sẽ xử lý bằng [lọc ở tầng code: sau khi nhận JSON từ LLM, đối chiếu chéo danh sách thực tế của hệ thống; loại bỏ ngay các ID ảo; nếu danh sách sau lọc trống thì kích hoạt fallback ít dữ liệu (TC-04)].
-Owner kiểm thử path này là [Cần điền thủ công].
 ```
+Owner kiểm thử path này là Ngọc
 
 ## 8. Owner plan cho sáng Day 06
 
 | Thành viên | Việc phụ trách | Bằng chứng cần có trong repo |
 |---|---|---|
-| [Cần điền thủ công] | Research / evidence | Bảng kết quả phỏng vấn + tổng hợp review thực tế. |
-| [Cần điền thủ công] | SPEC | Hoàn thiện file `thin-spec.md` và `evidence-pack.md`. |
-| [Cần điền thủ công] | Prototype | Source code giao diện chat gợi ý, prompt system và danh sách quán mẫu giả lập (10-20 quán). |
-| [Cần điền thủ công] | Test / failure path | Bảng chạy 12 testcase và code xử lý các kịch bản fallback. |
-| [Cần điền thủ công] | Demo script / repo | Tài liệu kịch bản demo và video quay thử các luồng. |
+| Nhật Anh | Research / evidence | Bảng kết quả khảo sát thực tế |
+| Nhật Anh và Ngọc | SPEC | Hoàn thiện file `thin-spec.md` và `evidence-pack.md`. |
+| Minh & Huy & Nam  | Prototype | Source code giao diện chat gợi ý, prompt system và danh sách quán mẫu giả lập (10-20 quán). |
+| Ngọc | Test / failure path | Bảng chạy 12 testcase và code xử lý các kịch bản fallback. |
+| Cả nhóm | Demo script / repo | Tài liệu kịch bản demo và video quay thử các luồng. |
